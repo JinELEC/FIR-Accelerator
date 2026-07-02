@@ -52,3 +52,5 @@ This reduces the number of iterations by approximately 4x compared to a serial F
 
 ![Accelerator Core ASM](docs/fir_controller.png)
 
+### Fixed-point Scaling
+Final output is scaled using an arithmetic shift to compensate for fixed-point coefficient scaling.
