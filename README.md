@@ -48,3 +48,7 @@ Each cycle computes:
 
 This reduces the number of iterations by approximately 4x compared to a serial FIR.
 
+### Accelerator Core ASM
+
+![Accelerator Core ASM](docs/fir_controller.png)
+
