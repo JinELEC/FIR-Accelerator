@@ -15,3 +15,17 @@ The baseline design is implemented as a serial FIR architecture using a sequenti
 Each output is controlled by a state machine. Since all tap operations are performed sequentially, hardware utilization is low, but thorughput is limited.
 
 ![Serial FIR Architecture](docs/serial_block_diagram.png)
+
+### 4-way Parallel / Pipelined FIR Accelerator
+
+The developed FIR accelerator is designed based on an expanded serial architecture into 4-way parallel data process and a pipelined MAC.
+
+It fetches 4 input samples and 4 coefficients simultaneously to calculate partial sum by utilizing a 2-stage pipeline to reduce operation latency. 
+
+- Stage 1: Fetch 4 samples and 4 coefficients
+- Stage 2: Partial multiplication and accumulation
+- Stage 3: Final accumulation and output scaling
+
+In addition, the design reduces loop iterations by increasing the address counter by 4 and manages pipeline execution using control signals for partial and final sums.
+
+![FIR Accelerator Core](docs/accele_block_diagram.png)
