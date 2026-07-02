@@ -1,8 +1,8 @@
-# FIR-Accelerator
+# FIR Accelerator
 ## Introduction
 Finite Impulse Response (FIR) filters are widely used in digital signal processing applications. However, conventional serial architecture has limited throughput due to sequential operations.
 
-This project implements a parameterized pipelined FIR filter accelerator with an AXI4-Stream interface to improve filter performance. A bansline serial FIR core is developed into a 4-way parallel and pipelined architecture. 
+This project implements a parameterized pipelined FIR filter accelerator with an AXI4-Stream interface to improve filter performance. A baseline serial FIR core is developed into a 4-way parallel and pipelined architecture. 
 
 The designs were verified using identical low-pass filter coefficients, and performance and resource trade-offs relative to the serial architecture were analyzed by comparing LUT, FF, and DSP resource usage, maximum operating frequency (Fmax), latency, and throughput based on FPAG synthesis results.
 
