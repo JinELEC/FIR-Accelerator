@@ -57,7 +57,7 @@ Final output is scaled using an arithmetic shift to compensate for fixed-point c
 
 ## Verification
 The design was verified using simulation by changing parameters.
-![FIR Waveform](docs/16-tap_waveform.png)
+![FIR Waveform](docs/16-tap_waveform(low-pass).png)
 
 ## 16-Tap FIR FPGA Synthesis Results
 | Design | LUT | FF | DSP | Fmax (MHz) | Latency (cycles) | Throughput (MS/s) |
