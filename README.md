@@ -13,4 +13,5 @@ The design consists of a baseline serial FIR structure and extended 4-way parall
 The baseline design is implemented as a serial FIR architecture using a sequential MAC (Multiply-Accumulate). Input samples are updated every clock cycle through a shift register, and a single accumulator is used to sequential filter operations. 
 
 Each output is controlled by a state machine. Since all tap operations are performed sequentially, hardware utilization is low, but thorughput is limited.
+
 ![Serial FIR Architecture](docs/serial_fir.png)
