@@ -29,3 +29,22 @@ It fetches 4 input samples and 4 coefficients simultaneously to calculate partia
 In addition, the design reduces loop iterations by increasing the address counter by 4 and manages pipeline execution using control signals for partial and final sums.
 
 ![FIR Accelerator Core](docs/accele_block_diagram.png)
+
+## Implementation Details
+### AXI4-Stream Interface
+The design uses AXI4-Stream interface for both input and output, with internal FIFO buffers to separate streaming I/O from computation and support backpressure.
+
+### Parameterized FIR Filter
+It is a scalable design by chaning the number of taps such as 16, 32, and 64 through parameters. Low-pass and high-pass are implemented by changing coefficient sets without modifying RTL logic.
+
+### 4-Way Parallel MAC Architecture
+A 4-sample parallel structure is used to accelerate convolution.
+
+Each cycle computes:
+
+- 4 multiplication
+- 2 partial sums
+- 1 accumulation stage
+
+This reduces the number of iterations by approximately 4x compared to a serial FIR.
+
