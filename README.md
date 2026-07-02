@@ -60,3 +60,14 @@ Final output is scaled using an arithmetic shift to compensate for fixed-point c
 |--------|-----|----|-----|-------------|------------------|-------------------|
 | Serial FIR | 35 | 24 | 1 | 149.72 | 18 | 8.32 |
 | FIR Accelerator | 159 | 191 | 4 | 118.51 | 8 | 14.81 |
+
+DSP usage increases 4x due to the 4-way parallel architecture. Latency is reduced by ~55%, while throughput increases by ~78%. Fmax decreases by ~21% due to increased critical path delay.
+
+## Conclusion
+DSP usage increases 4x due to the 4-way parallel architecture. Latency is reduced by approximately 55%, while throughput increases by approximately 78%. Fmax decreases by approximately 21% due to increased critical path delay.
+
+- Conclusion
+
+The FIR accelerator demonstrates a clear trade-off between resource utilization and performance. While the usage of LUT, FF, and DSP increases due to the 4-way parallel architecture, the design achieves improved throughput and reduced latency compared to the serial FIR. 
+
+Although Fmax decreases due to increased critical path delay, the overall system performance is improved in terms of samples processed per second.
