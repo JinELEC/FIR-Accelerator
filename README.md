@@ -35,12 +35,12 @@ In addition, the design reduces loop iterations by increasing the address counte
 The design uses AXI4-Stream interface for both input and output, with internal FIFO buffers to separate streaming I/O from computation and support backpressure.
 
 ### Parameterized FIR Filter
-It is a scalable design by chaning the number of taps such as 16, 32, and 64 through parameters. Low-pass and high-pass are implemented by changing coefficient sets without modifying RTL logic.
+It is a scalable design by changing the number of taps such as 16, 32, and 64 through parameters. Low-pass and high-pass are implemented by changing coefficient sets without modifying RTL logic.
 
 ### 4-Way Parallel MAC Architecture
 A 4-sample parallel structure is used to accelerate convolution.
 
-Each cycle computes:
+Each cycle performs:
 
 - 4 multiplication
 - 2 partial sums
@@ -55,8 +55,7 @@ This reduces the number of iterations by approximately 4x compared to a serial F
 ### Fixed-point Scaling
 Final output is scaled using an arithmetic shift to compensate for fixed-point coefficient scaling.
 
-## Verification
-The design was verified using simulation by changing parameters.
+## Simulation Waveform
 ![FIR Waveform](docs/16-tap_waveform(low-pass).png)
 
 ## 16-Tap FIR FPGA Synthesis Results
