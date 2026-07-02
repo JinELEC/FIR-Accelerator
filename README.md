@@ -14,4 +14,4 @@ The baseline design is implemented as a serial FIR architecture using a sequenti
 
 Each output is controlled by a state machine. Since all tap operations are performed sequentially, hardware utilization is low, but thorughput is limited.
 
-![Serial FIR Architecture](docs/serial_fir.png)
+![Serial FIR Architecture](docs/serial_block_diagram.png)
