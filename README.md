@@ -54,3 +54,9 @@ This reduces the number of iterations by approximately 4x compared to a serial F
 
 ### Fixed-point Scaling
 Final output is scaled using an arithmetic shift to compensate for fixed-point coefficient scaling.
+
+## 16-Tap FIR FPGA Synthesis Results
+| Design | LUT | FF | DSP | Fmax (MHz) | Latency (cycles) | Throughput (MS/s) |
+|--------|-----|----|-----|-------------|------------------|-------------------|
+| Serial FIR | 35 | 24 | 1 | 149.72 | 18 | 8.32 |
+| FIR Accelerator | 159 | 191 | 4 | 118.51 | 8 | 14.81 |
