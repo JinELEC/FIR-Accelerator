@@ -46,12 +46,6 @@ initial begin
     #100ns n_rst = 1'b1; 
 end
 
-/* 
-현재 DUE 는 sequential FIR Filter. 그래서 64비트를 사용하면 16비트를 사용하는 것보다 연산하는데 더 오래 걸림.
-그래서 이를 고려하여 비트마다 sampling 되는 시점을 다르게 함.
-16비트면 64 clock 마다, 32비트면 128 clock 마다, 64비트면 256 clock 마다 sampling
-즉, input_ready 를 특정 clock 마다 trigger
-*/
 int sampling_clock_cycles;
 assign sampling_clock_cycles = TB_N * 4; 
 
@@ -88,27 +82,23 @@ initial begin
 end
 
 initial begin
-    // 초기화
     start_time = 0;
     end_time = 0;
     latency = end_time - start_time;
-    // 1. input_ready가 처음으로 켜지는(연산 시작) 시점 포착
-    // (만약 최초 입력의 rising edge를 잡고 싶다면 @(posedge tb_fir.in)을 쓰셔도 됩니다)
+
     @(posedge clk);
     wait(s_valid == 1'b1);
-    start_time = $realtime; // 현재 시간을 real 타입으로 저장 (단위: ns 또는 ps)
-    $display("[TIMING INFO] 연산 시작 시간: %0t", start_time);
+    start_time = $realtime; 
+    $display("[TIMING INFO] Calculation start time: %0t", start_time);
 
-    // 2. 그 직후 output_ready가 처음으로 툭 켜지는(연산 완료) 시점 대기
     @(posedge clk);
     wait(m_ready == 1'b1);
-    end_time = $realtime;   // 완료 시간 저장
-    $display("[TIMING INFO] 연산 완료 시간: %0t", end_time);
+    end_time = $realtime;   
+    $display("[TIMING INFO] Calculation end time: %0t", end_time);
 
-    // 3. 차이 계산 및 출력
     latency = end_time - start_time;
     $display("==================================================");
-    $display("[PERFORMANCE REPORT] 총 연산 지연 시간(Latency): %0f ns", latency);
+    $display("[PERFORMANCE REPORT] Total Latency: %0f ns", latency);
     $display("==================================================");
 end
 
